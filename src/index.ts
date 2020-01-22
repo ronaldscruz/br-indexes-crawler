@@ -1,4 +1,5 @@
 import express from 'express';
+import prettier from 'prettier';
 
 const app = express();
 const port = 8080 || process.env.PORT;

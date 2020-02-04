@@ -1,7 +1,6 @@
 import express from 'express';
-import TrCrawler from './crawlers/tr';
 import dotenv from 'dotenv';
-import { saveToDownloads } from './utils/xls';
+import { removeFileFromDownloads } from './utils/xls';
 
 dotenv.config();
 
@@ -15,8 +14,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('🚀 Server running at: http://localhost:', port);
 
-  saveToDownloads(
-    'https://ww2.trtsp.jus.br/fileadmin/tabelas-praticas/gerador_indices_tr.xls',
-    'tr_diaria.xls',
-  );
+  removeFileFromDownloads('tr_diaria.xls');
 });

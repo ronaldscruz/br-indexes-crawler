@@ -37,6 +37,7 @@ export async function saveDocumentToDownloads(
 export function removeFileFromDownloads(filename: string): boolean {
   try {
     fs.unlinkSync(downloadsPath + filename);
+
     return true;
   } catch (err) {
     console.error('Failed removing file.', err);

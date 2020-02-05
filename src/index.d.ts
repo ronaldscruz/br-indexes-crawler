@@ -1,4 +1,4 @@
-export declare type Index = {
+export declare interface Index {
   date: Date;
   value: number;
-};
+}

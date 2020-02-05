@@ -11,10 +11,11 @@ class TR {
     this.DOWNLOADS_PATH = `${__dirname}/../downloads/`;
   }
 
-  all() {
+  async all() {
     const savedFileName = 'TR_All.xlsx';
 
-    saveFileToDownloads(this.ALL_TR_URL, savedFileName);
+    await saveFileToDownloads(this.ALL_TR_URL, savedFileName);
+
     console.log(xlsx.readFile(this.DOWNLOADS_PATH + savedFileName));
   }
 }

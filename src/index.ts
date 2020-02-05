@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { removeFileFromDownloads } from './utils/xls';
-
+import TR from './models/TR';
 dotenv.config();
 
 const app = express();
@@ -13,6 +12,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log('🚀 Server running at: http://localhost:', port);
-
-  removeFileFromDownloads('tr_diaria.xls');
+  TR.all();
 });

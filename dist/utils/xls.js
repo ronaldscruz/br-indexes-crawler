@@ -63,10 +63,10 @@ exports.saveDocumentToDownloads = saveDocumentToDownloads;
  * Removes any file from "downloads" folder
  * @param filename File to be removed
  */
-function removeFileFromDownloads(filename) {
+function removeDocumentFromDownloads(filename) {
   return __awaiter(this, void 0, void 0, function*() {
     return false;
   });
 }
-exports.removeFileFromDownloads = removeFileFromDownloads;
+exports.removeDocumentFromDownloads = removeDocumentFromDownloads;
 //# sourceMappingURL=xls.js.map

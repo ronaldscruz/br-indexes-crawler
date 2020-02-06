@@ -60,7 +60,7 @@ class TR {
     const requestedTr = allTr.filter(tr => tr.date === date);
 
     if (requestedTr.length < 1)
-      throw new Error(`No index were found with this date: ${date}`);
+      throw new Error(`No indexes were found with this date: ${date}`);
 
     return requestedTr[0];
   }

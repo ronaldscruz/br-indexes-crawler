@@ -25,7 +25,6 @@ export async function saveFileToDownloads(
     return true;
   } catch (err) {
     console.error('Failed downloading file.', err);
-
     return false;
   }
 }

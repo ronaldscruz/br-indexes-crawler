@@ -1,5 +1,5 @@
 import xlsx from 'xlsx';
-import { saveFileToDownloads } from '../utils/files';
+import { saveFileToDownloads, removeFileFromDownloads } from '../utils/files';
 class TR {
   ALL_TR_URL: string;
   DOWNLOADS_PATH: string;
@@ -17,7 +17,7 @@ class TR {
     const trIndexesSheet = xlsx.readFile(`${this.DOWNLOADS_PATH}/${savedFileName}`)
       .Sheets['Índices diários'];
 
-    console.log(Object.keys(trIndexesSheet));
+    removeFileFromDownloads(savedFileName);
   }
 }
 

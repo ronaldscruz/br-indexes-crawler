@@ -1,11 +1,7 @@
 import xlsx from 'xlsx';
+import { Index } from '../types/Index';
 import { saveFileToDownloads, removeFileFromDownloads } from '../utils/files';
 import { removeTimeFromDate } from '../utils/date';
-
-interface Index {
-  date: string;
-  value: number;
-}
 class TR {
   ALL_TR_URL: string;
   DOWNLOADS_PATH: string;

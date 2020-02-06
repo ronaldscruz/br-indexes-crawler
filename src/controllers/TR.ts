@@ -1,9 +1,5 @@
 import TR from '../models/TR';
-
-interface Index {
-  date: string;
-  value: number;
-}
+import { Index } from '../types/Index';
 
 class TRController {
   async all(): Promise<Index[] | boolean> {

@@ -51,7 +51,27 @@ class TR {
     return trIndexes;
   }
 
-  async one(date?: string): Index {}
+  /**
+   * Returns a single TR from the specified date
+   * @param date a "2001-01-01" date
+   */
+  async one(date?: string): Promise<Index> {
+    const allTr = await this.all();
+    const requestedTr = allTr.filter(tr => tr.date === date);
+
+    if (requestedTr.length < 1)
+      throw new Error(`No index were found with this date: ${date}`);
+
+    return requestedTr[0];
+  }
+
+  /**
+   * A shortcurt to fetch only the last occurrence of the TR index.
+   */
+  async last(): Promise<Index> {
+    const allTr = await this.all();
+    return allTr.pop();
+  }
 }
 
 export default new TR();

@@ -1,10 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import TR from './models/TR';
 
 dotenv.config();
 
 const app = express();
-const port = 8080 || process.env.PORT;
+const port = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
   res.send('✅ API Running.');
@@ -12,4 +13,6 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log('🚀 Server running at: http://localhost:', port);
+
+  TR.all();
 });

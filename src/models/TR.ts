@@ -17,7 +17,7 @@ class TR {
   }
 
   /**
-   * Fetches all TR indexes from a sheet
+   * Fetches sall TR indexes from a sheet
    */
   async all(): Promise<Index[]> {
     const savedFileName = 'TR_All.xlsx';
@@ -44,12 +44,14 @@ class TR {
     );
 
     // Formatting dates
-    trIndexes.forEach(tri => (tri.date = removeTimeFromDate(tri.date)));
+    trIndexes.map(tri => (tri.date = removeTimeFromDate(tri.date)));
 
     removeFileFromDownloads(savedFileName);
 
     return trIndexes;
   }
+
+  async one(date?: string): Index {}
 }
 
 export default new TR();

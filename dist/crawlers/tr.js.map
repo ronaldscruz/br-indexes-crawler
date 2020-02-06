@@ -1,1 +1,0 @@
-{"version":3,"file":"tr.js","sourceRoot":"","sources":["../../src/crawlers/tr.ts"],"names":[],"mappings":";;;;;AAAA,gDAAwB;AAExB,MAAM,SAAS;IACb,GAAG;QACD,MAAM,KAAK,GAAG,cAAI,CAAC,QAAQ,CAAC,+CAA+C,CAAC,CAAC;QAC7E,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC;IACrB,CAAC;CACF;AAED,kBAAe,IAAI,SAAS,EAAE,CAAC"}

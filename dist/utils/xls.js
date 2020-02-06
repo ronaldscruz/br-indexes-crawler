@@ -1,72 +1,13 @@
-'use strict';
-var __awaiter =
-  (this && this.__awaiter) ||
-  function(thisArg, _arguments, P, generator) {
-    function adopt(value) {
-      return value instanceof P
-        ? value
-        : new P(function(resolve) {
-            resolve(value);
-          });
-    }
-    return new (P || (P = Promise))(function(resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator['throw'](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done
-          ? resolve(result.value)
-          : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-  };
-var __importDefault =
-  (this && this.__importDefault) ||
-  function(mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, '__esModule', { value: true });
-const axios_1 = __importDefault(require('axios'));
-const fs_1 = __importDefault(require('fs'));
-const misc_1 = require('./misc');
 // Helpers for reading XLS/XLSX documents
-/**
- * Downloads a document from a given URL
- * @param url URL to the document that will be downloaded
- */
-function saveDocumentToDownloads(url, filename = misc_1.randomString()) {
-  return __awaiter(this, void 0, void 0, function*() {
-    try {
-      const fileBuffer = yield axios_1.default.get(url);
-      fs_1.default.writeFileSync('../downloads/' + filename, fileBuffer);
-      return true;
-    } catch (err) {
-      console.error('Failed downloading file.', err);
-      return false;
-    }
-  });
-}
-exports.saveDocumentToDownloads = saveDocumentToDownloads;
-/**
- * Removes any file from "downloads" folder
- * @param filename File to be removed
- */
-function removeDocumentFromDownloads(filename) {
-  return __awaiter(this, void 0, void 0, function*() {
-    return false;
-  });
-}
-exports.removeDocumentFromDownloads = removeDocumentFromDownloads;
+// [ v ] ->	raw value (see Data Types section for more info)
+// [ w ] ->	formatted text (if applicable)
+// [ t ] ->	type: b Boolean, e Error, n Number, d Date, s Text, z Stub
+// [ f ] ->	cell formula encoded as an A1-style string (if applicable)
+// [ F ] ->	range of enclosing array if formula is array formula (if applicable)
+// [ r ] ->	rich text encoding (if applicable)
+// [ h ] ->	HTML rendering of the rich text (if applicable)
+// [ c ] ->	comments associated with the cell
+// [ z ] ->	number format string associated with the cell (if requested)
+// [ l ] ->	cell hyperlink object (.Target holds link, .Tooltip is tooltip)
+// [ s ] ->	the style/theme of the cell (if applicable)
 //# sourceMappingURL=xls.js.map

@@ -10,6 +10,9 @@ class TR {
     this.DOWNLOADS_PATH = `${__dirname}/../downloads`;
   }
 
+  /**
+   * Fetches all TR indexes from a sheet
+   */
   async all() {
     const savedFileName = 'TR_All.xlsx';
     await saveFileToDownloads(this.ALL_TR_URL, savedFileName);

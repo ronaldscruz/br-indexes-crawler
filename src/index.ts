@@ -1,6 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
+import TRRouter from './routes/TR';
+
 dotenv.config();
 
 const app = express();
@@ -10,6 +12,8 @@ app.get('/', (req, res) => {
   res.send('✅ API Running.');
 });
 
+app.use('/tr', TRRouter);
+
 app.listen(port, () => {
-  console.log('🚀 Server running at: http://localhost:', port);
+  console.log('🚀 Server running at: http://localhost:' + port);
 });

@@ -3,7 +3,7 @@ import fs from 'fs';
 
 // Helpers for handling files
 
-const downloadsPath = `${__dirname}/../downloads/`;
+const DOWNLOADS_PATH = `${__dirname}/../temp/`;
 
 /**
  * Downloads a file from a given URL
@@ -20,7 +20,7 @@ export async function saveFileToDownloads(
 
     if (!filename) filename = url.split('/').pop();
 
-    fs.writeFileSync(downloadsPath + filename, fileRequest.data);
+    fs.writeFileSync(DOWNLOADS_PATH + filename, fileRequest.data);
 
     return true;
   } catch (err) {
@@ -35,7 +35,7 @@ export async function saveFileToDownloads(
  */
 export function removeFileFromDownloads(filename: string): boolean {
   try {
-    fs.unlinkSync(downloadsPath + filename);
+    fs.unlinkSync(DOWNLOADS_PATH + filename);
 
     return true;
   } catch (err) {

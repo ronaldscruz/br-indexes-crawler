@@ -3,7 +3,7 @@ import fs from 'fs';
 
 // Helpers for handling files
 
-const DOWNLOADS_PATH = `${__dirname}/../temp/`;
+const DOWNLOADS_PATH = `${__dirname}/../../temp/`;
 
 /**
  * Downloads a file from a given URL

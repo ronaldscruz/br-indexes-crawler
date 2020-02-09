@@ -1,5 +1,5 @@
 import express from 'express';
-import TRController from './controllers/TR';
+import TRController from './app/controllers/TR';
 
 const routes = express.Router();
 

@@ -9,7 +9,7 @@ class TR {
   constructor() {
     this.ALL_TR_URL =
       'https://ww2.trtsp.jus.br/fileadmin/tabelas-praticas/gerador_indices_tr.xls';
-    this.DOWNLOADS_PATH = `${__dirname}/../downloads`;
+    this.DOWNLOADS_PATH = `${__dirname}/../../temp`;
   }
 
   /**

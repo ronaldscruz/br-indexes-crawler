@@ -1,34 +1,39 @@
+import express from 'express';
 import TR from '../models/TR';
-import { Index } from '../types/Index';
+import { isValidDate } from '../utils/date';
 
 class TRController {
-  async all(): Promise<Index[]> {
+  async all(req: express.Request, res: express.Response): Promise<void> {
     try {
       const allTr = await TR.all();
-      return allTr;
-    } catch (err) {
-      console.error('Failed fetching all TR indexes.', err);
-      return err;
+      res.status(200).json(allTr);
+    } catch (error) {
+      res.status(400).json({ error });
     }
   }
 
-  async one(date?: string): Promise<Index> {
+  async one(req: express.Request, res: express.Response): Promise<void> {
+    const { date } = req.params;
+
+    if (!isValidDate(date)) {
+      res.status(400).json({ error: 'Please, insert a valid date (YYYY-MM-DD).' });
+      return;
+    }
+
     try {
       const tr = await TR.one(date);
-      return tr;
-    } catch (err) {
-      console.error('Failed fetching requested TR index.', err);
-      return err;
+      res.status(200).json(tr);
+    } catch (error) {
+      res.status(400).json({ error });
     }
   }
 
-  async last(): Promise<Index> {
+  async last(req: express.Request, res: express.Response): Promise<void> {
     try {
       const lastTr = await TR.last();
-      return lastTr;
-    } catch (err) {
-      console.error('Failed fetching last TR index.', err);
-      return err;
+      res.status(200).json(lastTr);
+    } catch (error) {
+      res.status(400).json({ error });
     }
   }
 }

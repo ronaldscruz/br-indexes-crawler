@@ -1,6 +1,7 @@
 // Libs
 import axios from 'axios';
 import cheerio from 'cheerio';
+import cheerioTableParser from 'cheerio-tableparser';
 
 // Types
 import { Index } from '../types/Index';
@@ -16,27 +17,43 @@ class IPCAE {
   }
 
   /**
-   * Fetches all IPCA-E indexes from a sheet
+   * Fetches all IPCA-E indexes from the website
    */
   async all(): Promise<Index[]> {
     const { data: ipcaePage } = await axios.get(this.ALL_IPCAE_URL);
     const $ = cheerio.load(ipcaePage);
 
-    // Crawling tables and removing the last one
-    const indexTablesObject = $('section>article>table');
-    let indexTables = [];
+    // Stores all row content
+    const allTables = [];
 
-    // Creates an array based on Cheerio scrapping
-    Object.keys(indexTablesObject).forEach(k => {
-      if (+k !== NaN && +k !== 5) indexTables.push(indexTablesObject[k]);
+    // All tables
+    $('section>article>table').each((_, indexesTable) => {
+      // Each table
+      const tableContent = [];
+
+      $(indexesTable)
+        .find('tr')
+        .each((_, indexesTableRow) => {
+          // Each row
+          const rowContent = [];
+
+          $(indexesTableRow)
+            .children()
+            .each((_, rowCol) => {
+              // Each row col
+              const colText: string = $(rowCol).text();
+              !colText.includes('$') && colText.length > 0 && rowContent.push(colText);
+            });
+
+          rowContent.length > 0 && tableContent.push(rowContent);
+        });
+
+      tableContent.length > 0 && allTables.push(tableContent);
     });
 
-    // Accepting only tables
-    indexTables = indexTables.filter(itable => itable.name === 'table');
+    console.log(allTables[0][3][4]);
 
-    console.log(indexTables.length);
-
-    return [{ date: '2001-01-01', value: 0 }];
+    return [{ date: '0000-00-00', value: 0 }];
   }
 
   /**

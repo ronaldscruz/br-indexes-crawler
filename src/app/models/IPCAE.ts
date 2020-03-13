@@ -31,6 +31,7 @@ class IPCAE {
       if (+k !== NaN && +k !== 5) indexTables.push(indexTablesObject[k]);
     });
 
+    // Accepting only tables
     indexTables = indexTables.filter(itable => itable.name === 'table');
 
     console.log(indexTables.length);

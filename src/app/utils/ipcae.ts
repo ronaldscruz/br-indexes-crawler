@@ -1,33 +1,15 @@
 // IPCA-E crawling utils
-
 import { Index } from '../types/Index';
+
+import { createDailyIndex } from './indexes';
 import { shortMonthToISOCode } from './date';
-
-/**
- * Returns an entire month with indexes in it, all based on a initial date and value.
- * e.g. 2001-01-01 should return: 2001-01-02, 2001-01-03, ..., 2001-01-31 and all these
- * days will have the same initial value
- * @param initialDate An date with day 01
- * @param indexValue The value of the index to be spreaded all over the dates
- */
-function createDailyIndex(index: Index): Index[] {
-  const { date, value: indexValue } = index;
-
-  const initialDate = new Date(date);
-
-  const initialDateYear = initialDate.getFullYear();
-  const initialDateMonth = initialDate.getMonth();
-
-  const remainingDays: number =
-    new Date(initialDateYear, initialDateMonth, 0).getDate() - 1;
-}
 
 /**
  * Extracts a complete Index from an IPCA-E row
  * @param row Row of IPCA-E table
  * @param yearsMap A object that tells the index of each year inside the row
  */
-function extractRowIndexes(row, yearsMap): Index[] {
+function extractIndexesFromRow(row, yearsMap): Index[] {
   const monthCode = shortMonthToISOCode(row[0]);
 
   const extractedIndexes: Index[] = [];
@@ -49,9 +31,9 @@ function extractRowIndexes(row, yearsMap): Index[] {
       value: col,
     };
 
-    createDailyIndex(indexFromCol);
+    const dailyExtractedIndex: Index[] = createDailyIndex(indexFromCol);
 
-    extractedIndexes.push(indexFromCol);
+    extractedIndexes.push(...dailyExtractedIndex);
   });
 
   return extractedIndexes;
@@ -65,7 +47,7 @@ export function handleIpcaeTables(tables: string[][][]): Index[] {
   let allTablesIndexes: Index[] = [];
 
   tables.forEach(tableRows => {
-    // Setting list of years and creating yearsMap to call extractRowIndexes()
+    // Setting a list of current table years and creating yearsMap to call extractIndexesFromRow()
     const yearsAvailable: string[] = tableRows.shift();
     const yearsMap = {};
 
@@ -75,15 +57,15 @@ export function handleIpcaeTables(tables: string[][][]): Index[] {
       yearsMap[yearIndex] = year;
     });
 
-    // Extracting indexes from each row
-    const tableIndexes: Index[] = [];
+    // Extracting index values from each row
+    const tableIndexValues: Index[] = [];
 
     tableRows.forEach(row => {
-      const indexesFromRow = extractRowIndexes(row, yearsMap);
-      tableIndexes.push(...indexesFromRow);
+      const indexesFromRow = extractIndexesFromRow(row, yearsMap);
+      tableIndexValues.push(...indexesFromRow);
     });
 
-    allTablesIndexes.push(...tableIndexes);
+    allTablesIndexes.push(...tableIndexValues);
   });
 
   // Ordering indexes by date asc
@@ -93,7 +75,7 @@ export function handleIpcaeTables(tables: string[][][]): Index[] {
     return prevElementDate - nextElementDate;
   });
 
-  return [{ date: '0000-00-00', value: 0 }];
+  return allTablesIndexes;
 }
 
 /**

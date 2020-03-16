@@ -53,9 +53,9 @@ class IPCAE {
       tableContent.length > 0 && allTables.push(tableContent);
     });
 
-    const filteredIndexes: Index[] = handleIpcaeTables(allTables);
+    const ipcaeIndexes: Index[] = handleIpcaeTables(allTables);
 
-    return [{ date: '0000-00-00', value: 0 }];
+    return ipcaeIndexes;
   }
 
   /**
@@ -63,14 +63,21 @@ class IPCAE {
    * @param date a "2001-01-01" date
    */
   async one(date?: string): Promise<Index> {
-    return { date: '0000-00-00', value: 0 };
+    const allIpcae = await this.all();
+    const requestedIpcae = allIpcae.filter(tr => tr.date === date);
+
+    if (requestedIpcae.length < 1)
+      throw new Error(`No indexes were found with this date: ${date}`);
+
+    return requestedIpcae[0];
   }
 
   /**
    * A shortcurt to fetch only the last occurrence of the IPCA-E index.
    */
   async last(): Promise<Index> {
-    return { date: '0000-00-00', value: 0 };
+    const allIpcae = await this.all();
+    return allIpcae.pop();
   }
 }
 

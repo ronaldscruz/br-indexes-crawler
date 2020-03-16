@@ -10,20 +10,26 @@ import { handleIpcaeTables } from '../utils/ipcae';
 
 class IPCAE {
   ALL_IPCAE_URL: string;
-  DOWNLOADS_PATH: string;
 
   constructor() {
     this.ALL_IPCAE_URL =
       'https://www.aasp.org.br/suporte-profissional/tabela-pratica-para-calculo-de-atualizacao-monetaria-ipca-e/';
-    this.DOWNLOADS_PATH = `${__dirname}/../../temp`;
   }
 
   /**
    * Fetches all IPCA-E indexes from the website
    */
   async all(): Promise<Index[]> {
-    const { data: ipcaePage } = await axios.get(this.ALL_IPCAE_URL);
-    const $ = cheerio.load(ipcaePage);
+    let $;
+
+    try {
+      const { data: ipcaePage } = await axios.get(this.ALL_IPCAE_URL);
+      $ = cheerio.load(ipcaePage);
+    } catch (err) {
+      throw new Error(
+        `[IPCA-E] Failed fetching URL (${this.ALL_IPCAE_URL}), Error: ` + err,
+      );
+    }
 
     // Stores all index content
     const allTables = [];

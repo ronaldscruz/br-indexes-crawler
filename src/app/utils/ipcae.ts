@@ -77,12 +77,3 @@ export function handleIpcaeTables(tables: string[][][]): Index[] {
 
   return allTablesIndexes;
 }
-
-/**
- * Returns the table containing indexes from the entered year
- * @param year The desired table year
- * @param yearTables Array with all 3D tables
- */
-export function selectTableBasedOnYear(year: number, yearTables: string[][][]): number {
-  return;
-}

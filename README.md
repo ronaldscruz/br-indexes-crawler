@@ -1,6 +1,6 @@
 ## WIP Brazilian Indexes Crawler
 
-Node API that crawls brazilian indexes.
+Node API that crawls Brazilian indexes.
 
 <br>
 
@@ -18,7 +18,7 @@ Currently, BIC can crawl:
 
 ### How to run (using VSCode Editor)
 
-This guide considers that you already have both Node and NPM installed. If don't have them, install by following [this guide](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/). Also, you will need TypeScript, if you don't have it, simply run `sudo npm i -g typescript`
+This guide considers that you already have both Node and NPM installed. If you don't have them, install by following [this guide](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/). Also, you will need TypeScript, if you don't have it, simply run `sudo npm i -g typescript`
 
 1.  Access the repository directory (probably "br-indexes-crawler")
 2.  Install: ESLint, Prettier and editorconfig extensions inside your VSCode
@@ -32,7 +32,7 @@ This guide considers that you already have both Node and NPM installed. If don't
 
 ### How to build
 
-To build the project, simply run `npm run build`. The bundle will be stored inside "dist" folder.
+To build the project, simply run `npm run build`. The bundle will be stored inside the "dist" folder.
 
 ### Contributions
 

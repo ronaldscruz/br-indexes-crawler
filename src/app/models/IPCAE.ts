@@ -1,10 +1,12 @@
 // Libs
 import axios from 'axios';
 import cheerio from 'cheerio';
-import cheerioTableParser from 'cheerio-tableparser';
 
 // Types
 import { Index } from '../types/Index';
+
+// Utils
+import { handleIpcaeTables } from '../utils/ipcae';
 
 class IPCAE {
   ALL_IPCAE_URL: string;
@@ -23,11 +25,11 @@ class IPCAE {
     const { data: ipcaePage } = await axios.get(this.ALL_IPCAE_URL);
     const $ = cheerio.load(ipcaePage);
 
-    // Stores all row content
+    // Stores all index content
     const allTables = [];
 
-    // All tables
-    $('section>article>table').each((_, indexesTable) => {
+    // Returns only tables with indexes inside it
+    $('section>article>table').each((_, indexesTable): void => {
       // Each table
       const tableContent = [];
 
@@ -51,7 +53,7 @@ class IPCAE {
       tableContent.length > 0 && allTables.push(tableContent);
     });
 
-    console.log(allTables[0][3][4]);
+    const filteredIndexes: Index[] = handleIpcaeTables(allTables);
 
     return [{ date: '0000-00-00', value: 0 }];
   }

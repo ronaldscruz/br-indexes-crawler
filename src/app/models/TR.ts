@@ -1,7 +1,13 @@
+// Libs
 import xlsx from 'xlsx';
+
+// Types
 import { Index } from '../types/Index';
+
+// Utils
 import { saveFileToDownloads, removeFileFromDownloads } from '../utils/files';
 import { removeTimeFromDate } from '../utils/date';
+
 class TR {
   ALL_TR_URL: string;
   DOWNLOADS_PATH: string;

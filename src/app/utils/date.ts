@@ -20,3 +20,28 @@ export function isValidDate(date: string | Date): boolean {
 
   return date.toString() !== 'Invalid Date';
 }
+
+/**
+ * Returns the corresponding number to a month ISO code (01, 02, 03, 04, etc.)
+ * @param monthShort Short month name (e.g. jan, fev, mar, abr, mai, etc.)
+ */
+export function shortMonthToISOCode(monthShort: string): string {
+  monthShort = monthShort.toLocaleLowerCase();
+
+  const monthCodes = {
+    jan: '01',
+    fev: '02',
+    mar: '03',
+    abr: '04',
+    mai: '05',
+    jun: '06',
+    jul: '07',
+    ago: '08',
+    set: '09',
+    out: '10',
+    nov: '11',
+    dez: '12',
+  };
+
+  return monthCodes[monthShort];
+}

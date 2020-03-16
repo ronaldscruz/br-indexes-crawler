@@ -1,7 +1,7 @@
+// Helpers for handling files
+
 import axios from 'axios';
 import fs from 'fs';
-
-// Helpers for handling files
 
 const DOWNLOADS_PATH = `${__dirname}/../../temp/`;
 

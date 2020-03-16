@@ -2,7 +2,7 @@
 import express from 'express';
 
 // Model
-import TR from '../models/TR';
+import IPCAE from '../models/IPCAE';
 
 // Utils
 import { isValidDate } from '../utils/date';
@@ -10,8 +10,8 @@ import { isValidDate } from '../utils/date';
 class TRController {
   async all(req: express.Request, res: express.Response): Promise<void> {
     try {
-      const allTr = await TR.all();
-      res.status(200).json(allTr);
+      const allIpcae = await IPCAE.all();
+      res.status(200).json(allIpcae);
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -26,8 +26,8 @@ class TRController {
     }
 
     try {
-      const tr = await TR.one(date);
-      res.status(200).json(tr);
+      const ipcae = await IPCAE.one(date);
+      res.status(200).json(ipcae);
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -35,8 +35,8 @@ class TRController {
 
   async last(req: express.Request, res: express.Response): Promise<void> {
     try {
-      const lastTr = await TR.last();
-      res.status(200).json(lastTr);
+      const lastIpcae = await IPCAE.last();
+      res.status(200).json(lastIpcae);
     } catch (error) {
       res.status(400).json({ error });
     }

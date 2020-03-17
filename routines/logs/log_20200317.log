@@ -1,0 +1,55 @@
+
+----------------------------
+
+[UPDATE DATABASE INDEXES]
+
+----------------------------
+
+Requesting tr from URL: http://localhost:4500/tr
+[03/17/2020 02:58:14] Got 0 tr from API
+
+----------------------------
+
+Requesting ipcae from URL: http://localhost:4500/ipcae
+[03/17/2020 02:58:14] Got 10318 ipcae from API
+[03/17/2020 02:58:14] Truncating ipcae
+[03/17/2020 02:58:15] Inserting indexes into ipcae...
+[03/17/2020 02:58:17] IPCAE rows inserted: 10318
+
+----------------------------
+
+Indexes updated successfully, took: 123.67839598656s
+
+----------------------------
+
+[UPDATE DATABASE INDEXES]
+
+----------------------------
+
+Requesting tr from URL: http://localhost:4500/tr
+[03/17/2020 03:02:31] Got 0 tr from API
+
+----------------------------
+
+Requesting ipcae from URL: http://localhost:4500/ipcae
+[03/17/2020 03:02:31] Got 0 ipcae from API
+
+----------------------------
+
+Indexes updated successfully, took: 89.876855134964s
+
+----------------------------
+
+[UPDATE DATABASE INDEXES]
+
+----------------------------
+
+Requesting tr from URL: http://localhost:4500/tr
+
+----------------------------
+
+[UPDATE DATABASE INDEXES]
+
+----------------------------
+
+Requesting tr from URL: http://localhost:4500/tr

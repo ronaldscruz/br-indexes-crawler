@@ -83,4 +83,4 @@
   $totalTime = $timeEnd - $timeStart;
 
   logTitle("Indexes updated successfully, took: {$totalTime}s", true);
-?>le
+?>

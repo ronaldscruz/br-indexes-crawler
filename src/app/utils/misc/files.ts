@@ -3,7 +3,7 @@
 import axios from 'axios';
 import fs from 'fs';
 
-const DOWNLOADS_PATH = `${__dirname}/../../temp/`;
+const DOWNLOADS_PATH = `${__dirname}/../../../temp/`;
 
 /**
  * Downloads a file from a given URL
@@ -24,8 +24,7 @@ export async function saveFileToDownloads(
 
     return true;
   } catch (err) {
-    console.error('Failed downloading file.', err);
-    return false;
+    throw new Error('Failed downloading file.' + err);
   }
 }
 
@@ -39,7 +38,6 @@ export function removeFileFromDownloads(filename: string): boolean {
 
     return true;
   } catch (err) {
-    console.error('Failed removing file.', err);
-    return false;
+    throw new Error('Failed removing file.' + err);
   }
 }

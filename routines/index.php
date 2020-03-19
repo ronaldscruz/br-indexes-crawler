@@ -17,6 +17,7 @@
     $indexAPIEndpointAndDBTable = [
       "tr" => "tr",
       "ipcae" => "ipcae",
+      "inpc" => "inpc",
     ];
   
     $ch = curl_init();

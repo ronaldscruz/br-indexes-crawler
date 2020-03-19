@@ -10,9 +10,10 @@ Currently, BIC can crawl:
 
 1.  [x] TR
 2.  [x] IPCA-E
-3.  [ ] INPC
-4.  [ ] JAM
-5.  [ ] SELIC
+3.  [x] INPC
+4.  [ ] Índice Misto
+5.  [ ] JAM
+6.  [ ] SELIC
 
 <br>
 
@@ -30,9 +31,9 @@ This guide considers that you already have both Node and NPM installed. If you d
 
     `npm run dev`
 
-### How to build
+### Production mode
 
-To build the project, simply run `npm run build`. The bundle will be stored inside the "dist" folder.
+To run the production version of the project, simply run `npm start`. The bundle will be stored inside the "dist" folder.
 
 ### Contributions
 

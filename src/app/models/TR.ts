@@ -19,7 +19,7 @@ class TR {
   }
 
   /**
-   * Fetches sall TR indexes from a sheet
+   * Fetches all TR indexes from a sheet
    */
   async all(): Promise<Index[]> {
     const savedFileName = 'TR_All.xlsx';

@@ -30,9 +30,9 @@ This guide considers that you already have both Node and NPM installed. If you d
 
     `npm run dev`
 
-### How to build
+### Production mode
 
-To build the project, simply run `npm run build`. The bundle will be stored inside the "dist" folder.
+To run the production version of the project, simply run `npm start`. The bundle will be stored inside the "dist" folder.
 
 ### Contributions
 

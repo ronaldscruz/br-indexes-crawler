@@ -6,7 +6,7 @@ import cheerio from 'cheerio';
 import { Index } from '../types/Index';
 
 // Utils
-import { handleIpcaeTables } from '../utils/ipcae';
+import { handleIpcaeTables } from '../utils/indexes/ipcae';
 
 class IPCAE {
   ALL_IPCAE_URL: string;

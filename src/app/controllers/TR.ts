@@ -5,7 +5,7 @@ import express from 'express';
 import TR from '../models/TR';
 
 // Utils
-import { isValidDate } from '../utils/date';
+import { isValidDate } from '../utils/misc/date';
 
 class TRController {
   async all(req: express.Request, res: express.Response): Promise<void> {

@@ -1,19 +1,57 @@
 // Types
 import { Index } from '../types/Index';
 
+// Libs
+import cheerio from 'cheerio';
+import axios from 'axios';
+
+// Utils
+import { handleInpcTable } from '../utils/indexes/inpc';
+
 class INPC {
   ALL_INPC_URL: string;
 
   constructor() {
-    this.ALL_INPC_URL =
-      'https://ww2.trtsp.jus.br/fileadmin/tabelas-praticas/gerador_indices_tr.xls';
+    this.ALL_INPC_URL = 'https://www.indiceseindicadores.com.br/inpc/';
   }
 
   /**
    * Fetches all INPC indexes from the website
    */
   async all(): Promise<Index[]> {
-    return [{ date: '0000-00-00', value: 0 }];
+    let $;
+
+    try {
+      const { data: ipcaePage } = await axios.get(this.ALL_INPC_URL);
+      $ = cheerio.load(ipcaePage);
+    } catch (err) {
+      throw new Error(`[INPC] Failed fetching URL (${this.ALL_INPC_URL}), Error: ` + err);
+    }
+
+    // Stores all index content
+    const inpcTableBody = $('#supsystic-table-6>tbody');
+    const inpcTableRowsContent = [];
+
+    $(inpcTableBody)
+      .find('tr')
+      .each((_, inpcRow) => {
+        // Each row
+        const rowContent = [];
+
+        $(inpcRow)
+          .children()
+          .each((_, inpcRowCol) => {
+            // Each row col
+            const colText: string = $(inpcRowCol).text();
+            colText && rowContent.push(colText);
+          });
+
+        inpcTableRowsContent.push(rowContent);
+      });
+
+    const inpcIndexes: Index[] = handleInpcTable(inpcTableRowsContent);
+
+    return inpcIndexes;
   }
 
   /**

@@ -10,9 +10,10 @@ Currently, BIC can crawl:
 
 1.  [x] TR
 2.  [x] IPCA-E
-3.  [ ] INPC
-4.  [ ] JAM
-5.  [ ] SELIC
+3.  [x] INPC
+4.  [ ] Índice Misto
+5.  [ ] JAM
+6.  [ ] SELIC
 
 <br>
 

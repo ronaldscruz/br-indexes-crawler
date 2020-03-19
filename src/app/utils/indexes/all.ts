@@ -1,6 +1,6 @@
 // Utils for handling indexes
 
-import { Index } from '../types/Index';
+import { Index } from '../../types/Index';
 
 /**
  * Returns an entire month with indexes in it, all based on a initial date and value.

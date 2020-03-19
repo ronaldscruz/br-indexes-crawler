@@ -5,8 +5,8 @@ import xlsx from 'xlsx';
 import { Index } from '../types/Index';
 
 // Utils
-import { saveFileToDownloads, removeFileFromDownloads } from '../utils/files';
-import { removeTimeFromDate } from '../utils/date';
+import { saveFileToDownloads, removeFileFromDownloads } from '../utils/misc/files';
+import { removeTimeFromDate } from '../utils/misc/date';
 
 class TR {
   ALL_TR_URL: string;
@@ -19,7 +19,7 @@ class TR {
   }
 
   /**
-   * Fetches sall TR indexes from a sheet
+   * Fetches all TR indexes from a sheet
    */
   async all(): Promise<Index[]> {
     const savedFileName = 'TR_All.xlsx';

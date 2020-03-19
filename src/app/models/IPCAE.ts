@@ -6,7 +6,7 @@ import cheerio from 'cheerio';
 import { Index } from '../types/Index';
 
 // Utils
-import { handleIpcaeTables } from '../utils/ipcae';
+import { handleIpcaeTables } from '../utils/indexes/ipcae';
 
 class IPCAE {
   ALL_IPCAE_URL: string;
@@ -70,7 +70,7 @@ class IPCAE {
    */
   async one(date?: string): Promise<Index> {
     const allIpcae = await this.all();
-    const requestedIpcae = allIpcae.filter(tr => tr.date === date);
+    const requestedIpcae = allIpcae.filter(ipcae => ipcae.date === date);
 
     if (requestedIpcae.length < 1)
       throw new Error(`No indexes were found with this date: ${date}`);

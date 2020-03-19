@@ -1,8 +1,8 @@
 // IPCA-E crawling utils
-import { Index } from '../types/Index';
+import { Index } from '../../types/Index';
 
-import { createDailyIndex } from './indexes';
-import { shortMonthToISOCode } from './date';
+import { createDailyIndex } from '../indexes/all';
+import { shortMonthToISOCode } from '../misc/date';
 
 /**
  * Extracts a complete Index from an IPCA-E row
